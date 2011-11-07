@@ -1,9 +1,14 @@
-def application(environ, start_response):
-    body = "Hello world!"
-    response_headers = [
-        ("Content-type", "text/html"),
-        ("Content-length", str(len(body)) ),
-        ]
+#!/usr/bin/env python
+# coding: utf-8
 
-    start_response("200 OK", response_headers)
-    return [body,]
+import sys
+import os
+
+sys.stdin = sys.stdout
+
+BASE_DIR = os.path.join(os.path.dirname(__file__))
+sys.path.append(BASE_DIR)
+
+from api import create_app
+
+application = create_app()
